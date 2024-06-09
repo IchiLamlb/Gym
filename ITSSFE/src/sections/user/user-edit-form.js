@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import NextLink from "next/link";
 import PropTypes from "prop-types";
 import toast from "react-hot-toast";
@@ -13,6 +14,11 @@ import {
   Stack,
   TextField,
   Unstable_Grid2 as Grid,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from "@mui/material";
 import { paths } from "src/paths";
 import { wait } from "src/utils/wait";
@@ -49,6 +55,7 @@ const initialValues = (customer) => {
 export const UserEditForm = (props) => {
   const { customer, onClose, ...other } = props;
   const router = useRouter();
+  const [open, setOpen] = useState(false);
   const formik = useFormik({
     initialValues: initialValues(customer),
     validationSchema: Yup.object({
@@ -96,133 +103,169 @@ export const UserEditForm = (props) => {
     },
   });
 
+  const handleSaveChanges = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleConfirm = () => {
+    setOpen(false);
+    formik.handleSubmit();
+  };
+
   return (
-    <form onSubmit={formik.handleSubmit} {...other}>
-      <Card>
-        <CardHeader title="Edit Customer" />
-        <CardContent sx={{ pt: 0 }}>
-          <Grid container spacing={3}>
-            <Grid xs={12} md={6}>
-              <TextField
-                error={!!(formik.touched.first_name && formik.errors.first_name)}
-                fullWidth
-                helperText={formik.touched.first_name && formik.errors.first_name}
-                label="First name"
-                name="first_name"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.first_name}
-              />
-            </Grid>
-            <Grid xs={12} md={6}>
-              <TextField
-                error={!!(formik.touched.last_name && formik.errors.last_name)}
-                fullWidth
-                helperText={formik.touched.last_name && formik.errors.last_name}
-                label="Last name"
-                name="last_name"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.last_name}
-              />
-            </Grid>
-            <Grid xs={12} md={6}>
-              <TextField
-                error={!!(formik.touched.email && formik.errors.email)}
-                fullWidth
-                helperText={formik.touched.email && formik.errors.email}
-                label="Email address"
-                name="gmail"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                required
-                value={formik.values.gmail}
-              />
-            </Grid>
+    <>
+      <form onSubmit={formik.handleSubmit} {...other}>
+        <Card>
+          <CardHeader title="Edit Customer" />
+          <CardContent sx={{ pt: 0 }}>
+            <Grid container spacing={3}>
+              <Grid xs={12} md={6}>
+                <TextField
+                  error={!!(formik.touched.first_name && formik.errors.first_name)}
+                  fullWidth
+                  helperText={formik.touched.first_name && formik.errors.first_name}
+                  label="First name"
+                  name="first_name"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.first_name}
+                />
+              </Grid>
+              <Grid xs={12} md={6}>
+                <TextField
+                  error={!!(formik.touched.last_name && formik.errors.last_name)}
+                  fullWidth
+                  helperText={formik.touched.last_name && formik.errors.last_name}
+                  label="Last name"
+                  name="last_name"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.last_name}
+                />
+              </Grid>
+              <Grid xs={12} md={6}>
+                <TextField
+                  error={!!(formik.touched.gmail && formik.errors.gmail)}
+                  fullWidth
+                  helperText={formik.touched.gmail && formik.errors.gmail}
+                  label="Email address"
+                  name="gmail"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  required
+                  value={formik.values.gmail}
+                />
+              </Grid>
 
-            <Grid xs={12} md={6}>
-              <TextField
-                error={!!(formik.touched.phone && formik.errors.phone)}
-                fullWidth
-                helperText={formik.touched.phone && formik.errors.phone}
-                label="Phone number"
-                name="phone"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.phone}
-              />
-            </Grid>
-            <Grid xs={12} md={6}>
-              <TextField
-                select
-                error={!!(formik.touched.gender && formik.errors.gender)}
-                fullWidth
-                helperText={formik.touched.gender && formik.errors.gender}
-                label="Gender"
-                name="gender"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.gender}
-              >
-                <MenuItem key={"male"} value={"male"}>
-                  male
-                </MenuItem>
-                <MenuItem key={"female"} value={"female"}>
-                  female
-                </MenuItem>
-              </TextField>
-            </Grid>
-            <Grid xs={12} md={6}>
-              <TextField
-                error={!!(formik.touched.birth && formik.errors.birth)}
-                fullWidth
-                helperText={formik.touched.birth && formik.errors.birth}
-                label="Birthday"
-                name="birth"
-                type="date"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.birth}
-              />
-            </Grid>
+              <Grid xs={12} md={6}>
+                <TextField
+                  error={!!(formik.touched.phone && formik.errors.phone)}
+                  fullWidth
+                  helperText={formik.touched.phone && formik.errors.phone}
+                  label="Phone number"
+                  name="phone"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.phone}
+                />
+              </Grid>
+              <Grid xs={12} md={6}>
+                <TextField
+                  select
+                  error={!!(formik.touched.gender && formik.errors.gender)}
+                  fullWidth
+                  helperText={formik.touched.gender && formik.errors.gender}
+                  label="Gender"
+                  name="gender"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.gender}
+                >
+                  <MenuItem key={"male"} value={"male"}>
+                    male
+                  </MenuItem>
+                  <MenuItem key={"female"} value={"female"}>
+                    female
+                  </MenuItem>
+                </TextField>
+              </Grid>
+              <Grid xs={12} md={6}>
+                <TextField
+                  error={!!(formik.touched.birth && formik.errors.birth)}
+                  fullWidth
+                  helperText={formik.touched.birth && formik.errors.birth}
+                  label="Birthday"
+                  name="birth"
+                  type="date"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.birth}
+                />
+              </Grid>
 
-            <Grid xs={12} md={6}></Grid>
-          </Grid>
-        </CardContent>
-        <Stack
-          direction={{
-            xs: "column",
-            sm: "row",
-          }}
-          flexWrap="wrap"
-          spacing={3}
-          sx={{ p: 3 }}
-        >
-          <Button
-            // onClick={formik.onSubmit}
-            // disabled={formik.isSubmitting}
-            type="submit"
-            variant="contained"
+              <Grid xs={12} md={6}></Grid>
+            </Grid>
+          </CardContent>
+          <Stack
+            direction={{
+              xs: "column",
+              sm: "row",
+            }}
+            flexWrap="wrap"
+            spacing={3}
+            sx={{ p: 3 }}
           >
-            Save Changes
-          </Button>
-          {customer ? (
             <Button
-              color="inherit"
-              component={NextLink}
-              disabled={formik.isSubmitting}
-              href={paths.customers.details(customer.id)}
+              onClick={handleSaveChanges}
+              // disabled={formik.isSubmitting}
+              variant="contained"
             >
-              Cancel
+              Save Changes
             </Button>
-          ) : (
-            <Button color="inherit" disabled={formik.isSubmitting} onClick={onClose}>
-              Cancel
-            </Button>
-          )}
-        </Stack>
-      </Card>
-    </form>
+            {customer ? (
+              <Button
+                color="inherit"
+                component={NextLink}
+                disabled={formik.isSubmitting}
+                href={paths.customers.details(customer.id)}
+              >
+                Cancel
+              </Button>
+            ) : (
+              <Button color="inherit" disabled={formik.isSubmitting} onClick={onClose}>
+                Cancel
+              </Button>
+            )}
+          </Stack>
+        </Card>
+      </form>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Confirm Save"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Do you want to save the changes?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            No
+          </Button>
+          <Button onClick={handleConfirm} color="primary" autoFocus>
+            Yes
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 };
 

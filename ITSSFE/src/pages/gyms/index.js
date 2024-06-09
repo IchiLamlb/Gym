@@ -127,6 +127,7 @@ const Page = () => {
               <Stack spacing={1}>
                 <Typography variant="h4">Gyms</Typography>
                 <Stack alignItems="center" direction="row" spacing={1}>
+                  {/*
                   <Button
                     color="inherit"
                     size="small"
@@ -149,8 +150,9 @@ const Page = () => {
                   >
                     Export
                   </Button>
+                  */}
                 </Stack>
-              </Stack>
+              </Stack>  
               <Stack alignItems="center" direction="row" spacing={3}>
                 <Button
                   startIcon={

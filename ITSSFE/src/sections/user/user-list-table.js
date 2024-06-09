@@ -143,10 +143,7 @@ export const UserListTable = ({
           <Checkbox checked={selectedAll} indeterminate={selectedSome} onChange={handleToggleAll} />
           <Button onClick={handleClickOpen} color="inherit" size="small">
             Delete
-          </Button>
-          <Button color="inherit" size="small">
-            Edit
-          </Button>
+          </Button>         
         </Stack>
       )}
       <Scrollbar>

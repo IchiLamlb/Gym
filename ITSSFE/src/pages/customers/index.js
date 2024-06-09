@@ -151,11 +151,12 @@ const Page = () => {
           py: 8,
         }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="xl"> 
           <Stack spacing={4}>
             <Stack direction="row" justifyContent="space-between" spacing={4}>
               <Stack spacing={1}>
                 <Typography variant="h4">Customers</Typography>
+                {/*
                 <Stack alignItems="center" direction="row" spacing={1}>
                   <Button
                     color="inherit"
@@ -180,6 +181,7 @@ const Page = () => {
                     Export
                   </Button>
                 </Stack>
+                */}
               </Stack>
               <Stack alignItems="center" direction="row" spacing={3}>
                 <Button

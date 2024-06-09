@@ -7,14 +7,17 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Stack,
-  Switch,
   TextField,
-  Typography,
-  Unstable_Grid2 as Grid,
 } from "@mui/material";
 import { wait } from "src/utils/wait";
 import roomsApi from "src/api/rooms";
+import { useState } from "react";
 
 const initialValues = (room) => {
   if (room)
@@ -34,6 +37,7 @@ const initialValues = (room) => {
 
 export const RoomAddForm = (props) => {
   const { room, onClose, editRoom, createRoom, ...other } = props;
+  const [openDialog, setOpenDialog] = useState(false);
 
   const formik = useFormik({
     initialValues: initialValues(room),
@@ -45,17 +49,17 @@ export const RoomAddForm = (props) => {
     onSubmit: async (values, helpers) => {
       try {
         if (room) {
-          editRoom(room.id, values);
+          await editRoom(room.id, values);
           await wait(500);
           helpers.setStatus({ success: true });
           helpers.setSubmitting(false);
-          toast.success("Employee updated");
+          toast.success("Room updated");
         } else {
-          createRoom(values);
+          await createRoom(values);
           await wait(500);
           helpers.setStatus({ success: true });
           helpers.setSubmitting(false);
-          toast.success("Employee created");
+          toast.success("Room created");
         }
       } catch (err) {
         console.error(err);
@@ -66,6 +70,19 @@ export const RoomAddForm = (props) => {
       }
     },
   });
+
+  const handleAddClick = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const handleConfirm = () => {
+    formik.handleSubmit();
+    setOpenDialog(false);
+  };
 
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
@@ -118,9 +135,9 @@ export const RoomAddForm = (props) => {
         >
           <Button
             disabled={formik.isSubmitting}
-            type="submit"
+            type="button"
             variant="contained"
-            onClick={onClose}
+            onClick={handleAddClick}
           >
             Add
           </Button>
@@ -129,6 +146,25 @@ export const RoomAddForm = (props) => {
           </Button>
         </Stack>
       </Card>
+      <Dialog
+        open={openDialog}
+        onClose={handleCloseDialog}
+      >
+        <DialogTitle>Confirm</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Do you want to save?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            No
+          </Button>
+          <Button onClick={handleConfirm} color="primary" autoFocus>
+            Yes
+          </Button>
+        </DialogActions>
+      </Dialog>
     </form>
   );
 };
@@ -136,4 +172,6 @@ export const RoomAddForm = (props) => {
 RoomAddForm.propTypes = {
   room: PropTypes.object.isRequired,
   onClose: PropTypes.func,
+  editRoom: PropTypes.func,
+  createRoom: PropTypes.func,
 };

@@ -124,7 +124,7 @@ VALUES ('MANAGER'),
        ('CUSTOMER_CARE');
 
 INSERT INTO user (first_name, last_name, birth, gender, gmail, password, avatar, is_deleted, phone, role)
-VALUES ('Tống', 'Phúc', '2002-05-15', 'Male', 'admin@gmail.com', 'admin', 'avatar1.jpg', FALSE, '1234567890', 1),
+VALUES ('Lê', 'Admin', '2002-05-15', 'Male', 'admin@gmail.com', 'admin', 'avatar1.jpg', FALSE, '1234567890', 1),
        ('Trường', 'Hoàng', '2002-12-10', 'Male', 'trainer@gmail.com', 'trainer', 'avatar3.jpg', FALSE, '4567890123', 3),
        ('Emily', 'Davis', '1995-07-03', 'Female', 'emilydavis@gmail.com', 'abc123xyz', 'avatar4.jpg', FALSE,
         '8901234567', 3),

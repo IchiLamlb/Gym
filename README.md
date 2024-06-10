@@ -1,7 +1,7 @@
 # Gym Center]
 ## Install
 ### Backend 
-#### `Install JDK 17`
+#### `Uninstall other JDK version` `Install JDK 17`
 ### Frontend
 #### `npm i`
 #### `npm run dev`

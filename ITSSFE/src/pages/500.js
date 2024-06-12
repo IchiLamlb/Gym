@@ -14,7 +14,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Error: Server Error | GymCenter</title>
+        <title>Error: Server Error | GymPro</title>
       </Head>
       <Box
         component="main"

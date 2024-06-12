@@ -16,7 +16,7 @@ const now = new Date();
 const Page = () => (
   <>
     <Head>
-      <title>Overview | GymCenter</title>
+      <title>Overview | GymPro</title>
     </Head>
     <Box
       component="main"

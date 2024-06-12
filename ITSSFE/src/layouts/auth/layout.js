@@ -26,7 +26,7 @@ export const Layout = (props) => {
     <LayoutRoot>
       <Head>
       <title>
-        Login | GymCenter
+        Login | GymPro
       </title>
     </Head>
       <Box
@@ -76,7 +76,7 @@ export const Layout = (props) => {
                   }
                 }}
               >
-                Gymcenter <span>Group 14</span>
+                GymPro <span>Group 14</span>
               </Box>
             </Stack>
           </Stack>

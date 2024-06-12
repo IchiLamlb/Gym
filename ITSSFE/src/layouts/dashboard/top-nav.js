@@ -70,9 +70,7 @@ export const TopNav = (props) => {
             )}
             <Tooltip title="Search">
               <IconButton>
-                <SvgIcon fontSize="small">
-                  <MagnifyingGlassIcon />
-                </SvgIcon>
+                
               </IconButton>
             </Tooltip>
           </Stack>

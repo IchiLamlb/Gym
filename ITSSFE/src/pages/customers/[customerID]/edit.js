@@ -49,7 +49,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Edit Customer | GymCenter</title>
+        <title>Edit Customer | GymPro</title>
       </Head>
       <Box
         component="main"

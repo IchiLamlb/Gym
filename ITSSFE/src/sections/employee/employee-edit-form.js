@@ -249,7 +249,7 @@ export const EmployeeEditForm = (props) => {
               color="inherit"
               component={NextLink}
               disabled={formik.isSubmitting}
-              href={paths.staff.details(staff.id)}
+              href={paths.staff.index}
             >
               Cancel
             </Button>

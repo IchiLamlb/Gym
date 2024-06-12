@@ -10,7 +10,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Account | GymCenter</title>
+        <title>Account | GymPro</title>
       </Head>
       <Box
         component="main"

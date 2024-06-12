@@ -133,7 +133,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Staff | GymCenter</title>
+        <title>Staff | GymPro</title>
       </Head>
       <Box
         component="main"

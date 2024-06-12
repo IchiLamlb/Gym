@@ -48,6 +48,7 @@ export const SideNav = (props) => {
       }}
     >
       <Box
+      
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -84,7 +85,7 @@ export const SideNav = (props) => {
                 color="inherit"
                 variant="subtitle1"
               >
-                GymCenter
+                GymPro
               </Typography>
               <Typography
                 color="neutral.400"
@@ -93,12 +94,7 @@ export const SideNav = (props) => {
                 Group 14
               </Typography>
             </div>
-            <SvgIcon
-              fontSize="small"
-              sx={{ color: 'neutral.500' }}
-            >
-              <ChevronUpDownIcon />
-            </SvgIcon>
+            
           </Box>
         </Box>
         <Divider sx={{ borderColor: 'neutral.700' }} />
@@ -149,7 +145,7 @@ export const SideNav = (props) => {
         open
         PaperProps={{
           sx: {
-            backgroundColor: 'neutral.800',
+            backgroundColor: '#333366',
             color: 'common.white',
             width: 280
           }

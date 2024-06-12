@@ -142,7 +142,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Customers | GymCenter</title>
+        <title>Customers | GymPro</title>
       </Head>
       <Box
         component="main"
@@ -156,32 +156,7 @@ const Page = () => {
             <Stack direction="row" justifyContent="space-between" spacing={4}>
               <Stack spacing={1}>
                 <Typography variant="h4">Customers</Typography>
-                {/*
-                <Stack alignItems="center" direction="row" spacing={1}>
-                  <Button
-                    color="inherit"
-                    size="small"
-                    startIcon={
-                      <SvgIcon>
-                        <Upload01Icon />
-                      </SvgIcon>
-                    }
-                  >
-                    Import
-                  </Button>
-                  <Button
-                    color="inherit"
-                    size="small"
-                    startIcon={
-                      <SvgIcon>
-                        <Download01Icon />
-                      </SvgIcon>
-                    }
-                  >
-                    Export
-                  </Button>
-                </Stack>
-                */}
+                
               </Stack>
               <Stack alignItems="center" direction="row" spacing={3}>
                 <Button

@@ -5,6 +5,6 @@ export const Logo = () => {
   const fillColor = theme.palette.primary.main;
 
   return (
-    <img src='/logo.png'></img>
+    <img src='/logo1.png'></img>
   );
 };

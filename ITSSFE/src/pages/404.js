@@ -6,7 +6,7 @@ import { Box, Button, Container, SvgIcon, Typography } from "@mui/material";
 const Page = () => (
   <>
     <Head>
-      <title>404 | GymCenter</title>
+      <title>404 | GymPro</title>
     </Head>
     <Box
       component="main"

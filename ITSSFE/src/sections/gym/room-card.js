@@ -25,7 +25,7 @@ export const RoomCard = (props) => {
     <>
       <Card variant="outlined">
         <CardMedia
-          image={"/assets/rooms/room-2.png"}
+          image={"/assets/rooms/room-2.jpg"}
           component={NextLink}
           href={paths.gyms.details(room.id || 1)}
           sx={{ height: 180 }}

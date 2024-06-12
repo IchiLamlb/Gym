@@ -231,7 +231,7 @@ export const UserEditForm = (props) => {
                 color="inherit"
                 component={NextLink}
                 disabled={formik.isSubmitting}
-                href={paths.customers.details(customer.id)}
+                href={paths.customers.index}
               >
                 Cancel
               </Button>

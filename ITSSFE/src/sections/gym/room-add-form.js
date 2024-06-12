@@ -139,7 +139,7 @@ export const RoomAddForm = (props) => {
             variant="contained"
             onClick={handleAddClick}
           >
-            Add
+            Save
           </Button>
           <Button color="inherit" disabled={formik.isSubmitting} onClick={onClose}>
             Cancel

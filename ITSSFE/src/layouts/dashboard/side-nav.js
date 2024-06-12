@@ -27,8 +27,10 @@ export const SideNav = (props) => {
       const user = auth.user;
       if (user.role_name === "MANAGER")
         userItems = items.admin;
-      else if (user.role_name === "TRAINER" || user.role_name === "SALE" || user.role_name === "CUSTOMER_CARE")
+      else if (user.role_name === "CUSTOMERCARE")
         userItems = items.employee;
+      else 
+        userItems = items.coach;
     }
   
   const { open, onClose } = props;

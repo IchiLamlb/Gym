@@ -135,8 +135,8 @@ export const items = {
       ),
     },
     {
-      title: "Users",
-      path: "/users",
+      title: "Customers",
+      path: "/customers",
       icon: (
         <SvgIcon fontSize="small">
           <UsersIcon />
